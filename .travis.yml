@@ -33,6 +33,10 @@ matrix:
           compiler: clang
           dist: trusty
           env: T=debug
+        - os: linux
+          compiler: gcc
+          dist: trusty
+          env: T=debug CPPFLAGS="-DCURL_DOES_CONVERSIONS -DHAVE_ICONV -DCURL_ICONV_CODESET_OF_HOST=\"ISO8859-1\""
         - os: osx
           compiler: gcc
           env: T=debug
