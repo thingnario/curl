@@ -24,7 +24,7 @@ export CROSS_COMPILE=$ARCH
 export CPPFLAGS="-I$tool_chain_path/include -I$tool_chain_path/include"
 export LDFLAGS="-L$tool_chain_path/lib -L$tool_chain_path/lib"
 
-if [ "$CROSS" == "" ]; then
+if [ "$CROSS_COMPILE" == "" ]; then
 	export AR=ar
 	export AS=as
 	export CC=gcc
