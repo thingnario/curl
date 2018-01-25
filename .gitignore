@@ -44,6 +44,7 @@ curl-*.tar.xz
 curl-*.zip
 curl-config
 depcomp
+final
 install-sh
 libcurl.pc
 libtool
