@@ -30,19 +30,16 @@ if [ "$CROSS_COMPILE" == "" ]; then
 	export CC=gcc
 	export LD=ld
 	export NM=nm
-	./configure --prefix=`pwd`/final --disable-shared --enable-static --with-ssl=$tool_chain_path/lib --with-zlib=$tool_chain_path/lib
+	./configure --prefix=$tool_chain_path --disable-shared --enable-static --with-ssl=$tool_chain_path/lib --with-zlib=$tool_chain_path/lib
 else
 	export AR=${CROSS_COMPILE}-ar
 	export AS=${CROSS_COMPILE}-as
 	export CC=${CROSS_COMPILE}-gcc
 	export LD=${CROSS_COMPILE}-ld
 	export NM=${CROSS_COMPILE}-nm
-	./configure --prefix=`pwd`/final --disable-shared --enable-static --target=${CROSS_COMPILE} --host=${CROSS_COMPILE} --build=i586-pc-linux-gnu --with-ssl=$tool_chain_path/lib --with-zlib=$tool_chain_path/lib
+	./configure --prefix=$tool_chain_path --disable-shared --enable-static --target=${CROSS_COMPILE} --host=${CROSS_COMPILE} --build=i586-pc-linux-gnu --with-ssl=$tool_chain_path/lib --with-zlib=$tool_chain_path/lib
 fi
 export LIBS="-lssl -lcrypto"
 
 make
-make install
-
-cd final
-sudo cp -r * $tool_chain_path
+sudo PATH=$PATH make install
